@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/addlinkedlist/addlinkedlist.iml" filepath="$PROJECT_DIR$/addlinkedlist/addlinkedlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/addtwolistnodes/addtwolistnodes.iml" filepath="$PROJECT_DIR$/addtwolistnodes/addtwolistnodes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algorithms.iml" filepath="$PROJECT_DIR$/algorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/antidiagnal/antidiagnal.iml" filepath="$PROJECT_DIR$/antidiagnal/antidiagnal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrangehorses/arrangehorses.iml" filepath="$PROJECT_DIR$/arrangehorses/arrangehorses.iml" />
+      <module fileurl="file://$PROJECT_DIR$/atoi/atoi.iml" filepath="$PROJECT_DIR$/atoi/atoi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backuptapes/backuptapes.iml" filepath="$PROJECT_DIR$/backuptapes/backuptapes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/btreedistancek/btreedistancek.iml" filepath="$PROJECT_DIR$/btreedistancek/btreedistancek.iml" />
+      <module fileurl="file://$PROJECT_DIR$/candycount/candycount.iml" filepath="$PROJECT_DIR$/candycount/candycount.iml" />
+      <module fileurl="file://$PROJECT_DIR$/constaccess/constaccess.iml" filepath="$PROJECT_DIR$/constaccess/constaccess.iml" />
+      <module fileurl="file://$PROJECT_DIR$/counttrue/counttrue.iml" filepath="$PROJECT_DIR$/counttrue/counttrue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deckofcards/deckofcards.iml" filepath="$PROJECT_DIR$/deckofcards/deckofcards.iml" />
+      <module fileurl="file://$PROJECT_DIR$/distnodes/distnodes.iml" filepath="$PROJECT_DIR$/distnodes/distnodes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/findswaps/findswaps.iml" filepath="$PROJECT_DIR$/findswaps/findswaps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firstnotrepeat/firstnotrepeat.iml" filepath="$PROJECT_DIR$/firstnotrepeat/firstnotrepeat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firstuniquechar/firstuniquechar.iml" filepath="$PROJECT_DIR$/firstuniquechar/firstuniquechar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fullJustify/fullJustify.iml" filepath="$PROJECT_DIR$/fullJustify/fullJustify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gatherscore/gatherscore.iml" filepath="$PROJECT_DIR$/gatherscore/gatherscore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/leastdepthbst/leastdepthbst.iml" filepath="$PROJECT_DIR$/leastdepthbst/leastdepthbst.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lfucache/lfucache.iml" filepath="$PROJECT_DIR$/lfucache/lfucache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/linkedlistsort/linkedlistsort.iml" filepath="$PROJECT_DIR$/linkedlistsort/linkedlistsort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/listinsertsort/listinsertsort.iml" filepath="$PROJECT_DIR$/listinsertsort/listinsertsort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/listrotate/listrotate.iml" filepath="$PROJECT_DIR$/listrotate/listrotate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/malloc32/malloc32.iml" filepath="$PROJECT_DIR$/malloc32/malloc32.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maxcoin/maxcoin.iml" filepath="$PROJECT_DIR$/maxcoin/maxcoin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maxproduct/maxproduct.iml" filepath="$PROJECT_DIR$/maxproduct/maxproduct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mincutspalindrome/mincutspalindrome.iml" filepath="$PROJECT_DIR$/mincutspalindrome/mincutspalindrome.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mindistance/mindistance.iml" filepath="$PROJECT_DIR$/mindistance/mindistance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minmaxpages/minmaxpages.iml" filepath="$PROJECT_DIR$/minmaxpages/minmaxpages.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newrandom/newrandom.iml" filepath="$PROJECT_DIR$/newrandom/newrandom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/numdecodings/numdecodings.iml" filepath="$PROJECT_DIR$/numdecodings/numdecodings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/numswaps/numswaps.iml" filepath="$PROJECT_DIR$/numswaps/numswaps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order/order.iml" filepath="$PROJECT_DIR$/order/order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paint/paint.iml" filepath="$PROJECT_DIR$/paint/paint.iml" />
+      <module fileurl="file://$PROJECT_DIR$/palindrones/palindrones.iml" filepath="$PROJECT_DIR$/palindrones/palindrones.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parenthesis/parenthesis.iml" filepath="$PROJECT_DIR$/parenthesis/parenthesis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pathtocheese/pathtocheese.iml" filepath="$PROJECT_DIR$/pathtocheese/pathtocheese.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reversentom/reversentom.iml" filepath="$PROJECT_DIR$/reversentom/reversentom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reversentom2/reversentom2.iml" filepath="$PROJECT_DIR$/reversentom2/reversentom2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/topnwords/topnwords.iml" filepath="$PROJECT_DIR$/topnwords/topnwords.iml" />
+    </modules>
+  </component>
+</project>

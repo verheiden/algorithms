@@ -1,0 +1,3 @@
+/Users/jung/Documents/yuza/software/android/algorithms/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/Users/jung/Documents/yuza/software/android/algorithms/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+/Users/jung/Documents/yuza/software/android/algorithms/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/native-lib.dir

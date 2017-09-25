@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/addlinkedlist" />
+            <option value="$PROJECT_DIR$/addtwolistnodes" />
+            <option value="$PROJECT_DIR$/antidiagnal" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/arrangehorses" />
+            <option value="$PROJECT_DIR$/atoi" />
+            <option value="$PROJECT_DIR$/backuptapes" />
+            <option value="$PROJECT_DIR$/btreedistancek" />
+            <option value="$PROJECT_DIR$/candycount" />
+            <option value="$PROJECT_DIR$/constaccess" />
+            <option value="$PROJECT_DIR$/counttrue" />
+            <option value="$PROJECT_DIR$/deckofcards" />
+            <option value="$PROJECT_DIR$/distnodes" />
+            <option value="$PROJECT_DIR$/findswaps" />
+            <option value="$PROJECT_DIR$/firstnotrepeat" />
+            <option value="$PROJECT_DIR$/firstuniquechar" />
+            <option value="$PROJECT_DIR$/fullJustify" />
+            <option value="$PROJECT_DIR$/gatherscore" />
+            <option value="$PROJECT_DIR$/leastdepthbst" />
+            <option value="$PROJECT_DIR$/lfucache" />
+            <option value="$PROJECT_DIR$/linkedlistsort" />
+            <option value="$PROJECT_DIR$/listinsertsort" />
+            <option value="$PROJECT_DIR$/listrotate" />
+            <option value="$PROJECT_DIR$/malloc32" />
+            <option value="$PROJECT_DIR$/maxcoin" />
+            <option value="$PROJECT_DIR$/maxproduct" />
+            <option value="$PROJECT_DIR$/mincutspalindrome" />
+            <option value="$PROJECT_DIR$/mindistance" />
+            <option value="$PROJECT_DIR$/minmaxpages" />
+            <option value="$PROJECT_DIR$/newrandom" />
+            <option value="$PROJECT_DIR$/numdecodings" />
+            <option value="$PROJECT_DIR$/numswaps" />
+            <option value="$PROJECT_DIR$/order" />
+            <option value="$PROJECT_DIR$/paint" />
+            <option value="$PROJECT_DIR$/palindrones" />
+            <option value="$PROJECT_DIR$/parenthesis" />
+            <option value="$PROJECT_DIR$/pathtocheese" />
+            <option value="$PROJECT_DIR$/reversentom" />
+            <option value="$PROJECT_DIR$/reversentom2" />
+            <option value="$PROJECT_DIR$/topnwords" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
