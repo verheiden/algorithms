@@ -16,27 +16,24 @@ public class bubbleSort {
             System.out.print(" ");
         }
     }
-
-    private static void sortBubble(int[] list)
-    {
-        int N = list.length;
+public static void sortBubble(int[] arrays){
+        int N = arrays.length;
         boolean swapped = true;
-        for( int i = N-1; swapped == true && i>=1; i--)
-        {
+        for ( int i = N-1; swapped == true && i > 0; i--){
             swapped = false;
-            for( int j = 0; j < i ; j++){
-                if ( list[j] > list[j+1] ) {
-                    swap(list, j, j + 1);
+            for ( int j = 0; j < i; j++){
+                if ( arrays[j] > arrays[j+1]){
                     swapped = true;
+                    swap(arrays, j, j+1);
                 }
             }
         }
-    }
+}
     private static void swap(int[] data, int i, int j)
     {
         int temp = data[i];
         data[i] = data[j];
-        data[j] = data[i];
+        data[j] = temp;
     }
 }
 
