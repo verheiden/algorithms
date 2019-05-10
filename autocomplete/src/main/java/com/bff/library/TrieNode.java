@@ -2,40 +2,27 @@ package com.bff.library;
 
 import java.util.Collection;
 import java.util.HashMap;
-
-/**
- * Created by jung on 3/9/17.
+/*
+ * Created by Jung Verheiden on May 10th 2019
  */
 
-public class TrieNode
-{
-    Character code;
-    HashMap<Character, TrieNode > children;
-    public TrieNode(char c)
+class TrieNode {
+    Character character;
+    HashMap<Character, TrieNode> children;
+    TrieNode(char c)
     {
-        code = new Character(c);
-        children = new HashMap<Character, TrieNode>();
+        character = new Character(c);
+        children = new HashMap<>();
     }
-    public char getChar()
-    {
-        return code.charValue();
-    }
-    public Collection<TrieNode> getChildren()
-    {
+    public TrieNode add(char c){
+        Character index = new Character(c);
+        if ( children.get(index) == null )
+            children.put(index, new TrieNode(c));
+           return children.get(index);  }
+    public TrieNode getChildNode(char c) { return(children.get(new Character(c)));}
+    public Collection<TrieNode> getChildren(){
         return children.values();
     }
-    public void add(char c)
-    {
-        if ( children.get(new Character(c)) == null ){
-            children.put( new Character(c), new TrieNode(c));
-        }
-    }
-    public TrieNode getChildNode(char c)
-    {
-        return children.get(new Character(c));
-    }
-    public boolean contains(char c)
-    {
-        return( children.get(new Character(c)) != null );
-    }
+    public char getChar() { return character.charValue();}
 }
+

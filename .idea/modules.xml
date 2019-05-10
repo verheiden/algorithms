@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/algorithms.iml" filepath="$PROJECT_DIR$/algorithms.iml" />
       <module fileurl="file://$PROJECT_DIR$/angryprofessor/angryprofessor.iml" filepath="$PROJECT_DIR$/angryprofessor/angryprofessor.iml" />
       <module fileurl="file://$PROJECT_DIR$/atoi/atoi.iml" filepath="$PROJECT_DIR$/atoi/atoi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autocomplete/autocomplete.iml" filepath="$PROJECT_DIR$/autocomplete/autocomplete.iml" />
       <module fileurl="file://$PROJECT_DIR$/avgset/avgset.iml" filepath="$PROJECT_DIR$/avgset/avgset.iml" />
       <module fileurl="file://$PROJECT_DIR$/biggergreater/biggergreater.iml" filepath="$PROJECT_DIR$/biggergreater/biggergreater.iml" />
       <module fileurl="file://$PROJECT_DIR$/binarytree/binarytree.iml" filepath="$PROJECT_DIR$/binarytree/binarytree.iml" />

@@ -10,26 +10,29 @@ import java.util.Scanner;
 public class Trie {
     TrieNode root;
 
-       static public  void main(String args[])
-       {
-           Scanner input = new Scanner(System.in);
-        Trie tree = new Trie();
-        tree.load("The beautiful people");
-        tree.load("The beautiful flowers");
-        tree.load("The ugly garden is not beautiful");
-        tree.load("The beautiful  people is me");
-        while(input.hasNext())
+   public  static void main(String[] args){
+     Scanner terminal = new Scanner(System.in);
+     Trie tree = new Trie();
+
+     tree.load("April is beginning of Spring");
+     tree.load("Atom is a unit of moracle");
+     tree.load("April 1st is April fool's day");
+     tree.load("Atom Bomb");
+     tree.load("Nothing smells as nice as Citrus Blossoms");
+
+     while(terminal.hasNext()){
+        List<String> matches = tree.findCompletions(terminal.next());
+        if ( matches == null ){
+            System.out.println("No matches");
+        }
+        else
         {
-            String s = input.nextLine();
-            List<String> autoC = tree.findCompletions(s);
-            if (autoC != null)
+            for(String line : matches)
             {
-                for (String phrase : autoC) {
-                    System.out.println(phrase);
-                }
-                System.out.println("\n\n");
+                System.out.println(line);
             }
         }
+     }
     }
 
     public Trie(){
@@ -37,58 +40,33 @@ public class Trie {
     }
 
     public void load(String sData){
-        loadRecursive(root, sData + "$");
-    }
-
-    public void loadRecursive(TrieNode node, String sData)
-    {
-        if (isBlank(sData)){
-            return;
+        TrieNode node = root;
+        for( int i = 0; i < sData.length(); i++){
+            node = node.add(sData.charAt(i));
         }
-        char c = sData.charAt(0);
-        node.add(c);
-        TrieNode childNode = node.getChildNode(c);
-        loadRecursive(childNode, sData.substring(1));
+        node.add('$');
     }
-    public boolean matchPrefix(String prefix)
-    {
-        TrieNode matchedNode = matchPrefixRecursive(root, prefix);
-        return ( matchedNode  != null );
-    }
-    public TrieNode  matchPrefixRecursive(TrieNode node, String prefix)
-    {
-        if ( isBlank(prefix))
-            return node;
-        char c = prefix.charAt(0);
-        TrieNode childNode = node.getChildNode(c);
-        if ( childNode == null )
-            return null;
-        else
-            return(matchPrefixRecursive(childNode, prefix.substring(1)) );
-    }
-    private boolean isBlank(String sData)
-    {
-        if ((sData == null) || (sData.length() == 0))
-            return true;
 
-        char[] cArray = sData.toCharArray();
-        int l = cArray.length;
-
-        for (int i = 0; i < l; i++)
+    public TrieNode matchPrefix(String prefix)
+    {
+        TrieNode node = root;
+        for(int i = 0; i < prefix.length(); i++)
         {
-            char c = cArray[i];
-            Character s = new Character(c);
-            if ( !s.isWhitespace(c) )
-                return false;
+            node = node.getChildNode(prefix.charAt(i));
+            if ( node == null )
+                return null;
         }
-        return true;
+        return node;
     }
     public List<String> findCompletions(String prefix){
-        if ( matchPrefix(prefix) == false  )
-            return null;
-        TrieNode matchedNode = matchPrefixRecursive(root, prefix);
+        TrieNode matchedNode  = matchPrefix(prefix) ;
+         if ( matchedNode == null )  return null;
+
         List<String> completions = new ArrayList<String>();
-        findCompletetionsRecursive(matchedNode, prefix, completions);
+        for(TrieNode child : matchedNode.getChildren())
+        {
+            findCompletetionsRecursive(child, prefix, completions);
+        }
         return completions;
     }
 
@@ -96,17 +74,13 @@ public class Trie {
         List<String> completetions)
     {
         if ( node == null )
-            return;
-        if ( node.getChar() == '$')
-        {
-            completetions.add(prefix.substring(0, prefix.length() - 1));
+            return ;
+        if ( node.getChar() == '$'){
+            completetions.add(prefix);
             return;
         }
-        Collection<TrieNode> childNodes = node.getChildren();
-        for ( TrieNode childNode : childNodes )
-        {
-            char childChar = childNode.getChar();
-            findCompletetionsRecursive(childNode, prefix + childChar, completetions);
+        for( TrieNode child: node.getChildren()){
+            findCompletetionsRecursive(child, prefix + node.getChar(), completetions);
         }
     }
 }
