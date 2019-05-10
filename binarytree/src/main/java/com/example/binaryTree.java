@@ -6,19 +6,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
+
 /* solutions for binary tree by Jung Verheiden */
 public class binaryTree
 {
-    class Node
-    {
+    class Node {
         int id;
         Node left;
         Node right;
-        public  Node(int value)
-        {
-            id = value;
-            left = null;
-            right = null ;
+
+        public Node(int value){
+           id = value;
+           left = null;
+           right = null;
         }
     }
     Node root;
@@ -42,32 +43,41 @@ public class binaryTree
         brtree.insert(125);
         brtree.insert(101);
         brtree.insert(-88);
-
-        System.out.print("\n  Depth of the tree "  + brtree.depth());
-        List<List<Integer>> result = brtree.verticalOrder();
+        System.out.println("Complete tree");
+        brtree.display();
+        System.out.println("\n  Depth of the tree "  + brtree.depth());
+        ArrayList<ArrayList<Integer>> result = brtree.verticalOrder();
         int level = 0;
-        for ( List<Integer> list : result){
-            System.out.print("\n  Level : " + level++);
+        for ( ArrayList<Integer> list : result){
+            System.out.print("\n  Level "  + level++ + " : ");
             for(int id : list )
             {
                 System.out.print( " " + id );
             }
         }
+        Node common = brtree.lCommonAncestor( 3, -11);
+        if ( common != null )
+            System.out.println("\nCommon ancestor of 3 & -11 : " + common.id);
+        brtree.BFS();
 
-        System.out.println("A complete tree");
-        brtree.display();
+        System.out.println("\nInorder Depth first traverse ");
+        brtree.DFS(null);
+
         brtree.delete(-111);
         brtree.delete(125);
+        brtree.delete(101);
+        brtree.delete(2);
+        brtree.delete(5);
 
 
 
-        System.out.println("\nBinary tree after delete");
+        System.out.println("\nBinary tree after deleting -111 125 101 2 5");
          brtree.display();
 
         result = brtree.verticalOrder();
         level = 0;
-        for ( List<Integer> list : result){
-            System.out.print("\n  Level : " + level++);
+        for ( ArrayList<Integer> list : result){
+            System.out.print("\n  Level "  + level++ + " : ");
             for(int id : list )
             {
                 System.out.print( " " + id );
@@ -78,85 +88,65 @@ public class binaryTree
         int[] ints = {1,1,4,0,0,1,2,1};
         if ( ifZeros(ints)  == true)
         {
-            System.out.println("The array has zeros");
+            System.out.println("\nThe array has zeros");
         }
         else
         {
-            System.out.println("The array has not zeros");
+            System.out.println("\nThe array has not zeros");
         }
     }
-    public  binaryTree()
+    Node  lCommonAncestor(int A, int B)
     {
-        root = null;
+           if ( A > B ) return(findCommon(root, A, B));
+           else
+               return(findCommon(root, B, A));
     }
+    public Node findCommon(Node parent, int big, int small)
+    {
+        if ( parent == null )
+            return null;
+        if ( parent.id <= big && parent.id >= small )
+              return parent;
+        if ( parent.id > big )
+              return(findCommon(parent.left, big, small));
+        else
+            return(findCommon(parent.right, big, small));
+
+    }
+
+    public binaryTree() { root = null;}
     public void display() {
         traverseInOrder(root);
     }
-    public void insert1(int value){
-        Node newNode = new Node(value);
-        if ( root == null ){
-            root = newNode;
-            return;
-        }
-        Node current = root;
-        Node parent  = current;
-        while(true)
-        {
-            parent = current;
-            boolean isLeft = false;
-            if ( current.id > value )
-            {
-                current = current.left;
-                if ( current == null )
-                {
-                    parent.left = newNode;
-                    return;
-                }
-            }
-            else if ( current.id < value )
-            {
-                current = current.right;
-                if ( current == null )
-                {
-                    parent.right = newNode;
-                    return;
-                }
-            }
-        }
-    }
-    public void insert(int value)
-    {
-        Node newNode = new Node(value);
-        if ( root == null ) {
-            root = newNode;
-            return;
-        }
-        Node current = root;
-        Node parent = root;
 
-        while (true )
-        {
-            parent = current;
-            if ( current.id > value )
+   public void insert(int value){
+        if ( root == null ){
+            root = new Node(value);
+            return;
+        }
+        Node current = root;
+        while( current != null ){
+            if ( value == current.id )
             {
-                current = current.left;
-                if ( current == null )
-                {
-                    parent.left = newNode;
-                    return;
-                }
+                return;
             }
-            else
-            {
-                current= current.right;
-                if ( current== null )
+            else if ( value > current.id ){
+                if( current.right == null )
                 {
-                    parent.right = newNode;
+                    current.right = new Node(value);
                     return;
                 }
+                current = current.right;
+            } else
+            {
+                if ( current.left == null ){
+                    current.left = new Node(value);
+                    return;
+                }
+                current = current.left;
             }
         }
-    }
+   }
 
     public int depth()
     {
@@ -167,163 +157,89 @@ public class binaryTree
     {
         if ( node == null )
             return 0;
-        return(Math.max( depthRecursive(node.left), depthRecursive(node.right)) +1 );
+        return(Math.max(depthRecursive(node.right), depthRecursive(node.left)) + 1);
     }
-    public Node findNode1(int value){
-        if ( root == null )
-            return null;
-
-        Node current = root;
-        while( current.id != value ){
-            if ( value > current.id ){
-                current = current.right;
-            }
-            else
-            {
-                current = current.left;
-            }
-            if ( current == null )
-                return null;
-        }
-        return current;
-    }
-    public Node findNode(int value)
+    public void BFS()
     {
-        Node current = root;
-        while( current.id != value )
-        {
-            if ( current.id < value )
-                current = current.right;
-            else
-                current = current.left;
-            if ( current == null )
-                return null;
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        while(!q.isEmpty()){
+            Node node = q.remove();
+         System.out.print(node.id + " ");
+         if ( node.left != null )
+             q.add(node.left);
+         if ( node.right != null )
+             q.add(node.right);
         }
-        return current;
     }
-    public void deleteNode1(int value){
-        if ( root == null )
-            return;
-        if ( root.id == value)
-            root = null;
-        Node current = root;
-        Node parent = current;
-        boolean isLeft = false;
 
-        while(current.id != value )
-        {
-            parent = current;
-            if ( value > current.id )
-            {
-                current = current.right;
-                isLeft = false;
-            }
-            else
-            {
-                current = current.left;
-                isLeft = true;
-            }
-            if ( current == null )
-                return;
-        }
-        if ( current.left == null && current.right == null ){
-            if ( isLeft )
-            {
-                parent.left = null;
-            }
-            else
-            {
-                parent.right = null;
-            }
-            return;
-        }
-        else if ( current.left == null )
-        {
-            if (isLeft)
-            {
-                parent.left = current.right;
-            }
-            else
-            {
-                parent.right  = current.right;
-            }
-            return;
-        }else if ( current.right == null ){
-            if ( isLeft )
-                parent.left = current.left;
-            else
-                parent.right = current.left;
-        }
-        else if ( ( current.right != null ) && ( current.left != null )){
-            Node successor = findSuccessor(current);
-            if ( current == root ) {
-                root = successor;
-                return;
-            }
-            if ( isLeft )
-                parent.left = successor;
-            else
-                parent.right = successor;
-        }
-    }
-    public void deleteNode(int value)
+    public void DFS(Node node)
     {
-        if ( root == null )
-            return ;
-        if ( root.id ==  value )
-        {
+        traverseInOrder(root);
+    }
+
+
+
+    void delete(int val) {
+        Node node = root;
+        Node parent = null;
+        Boolean parentLeft = false;
+        while (node != null) {
+            if (node.id == val)
+                break;
+            parent = node;
+            if (node.id < val) {
+                node = node.right;
+                parentLeft = false;
+            } else {
+                node = node.left;
+                parentLeft = true;
+            }
+
+        }
+        if (node == null)
+            return;
+        if (parent == null) {
             root = null;
             return;
         }
-        Node current = root;
-        Node parent = current;
-        boolean isLeft = false;
-        while(current.id != value )
-        {
-            parent = current;
-            if ( current.id < value )
-            {
-                current = current.left;
-                isLeft = true;
-            }
-            else{
-                current = current.right;
-                isLeft = false;
-            }
-            if ( current == null )
+        if (parentLeft == true) {
+            if (node.right == null) {
+                parent.left = node.left;
                 return;
-        }
-        if ( ( current.left == null ) && (current.right == null  ))
+            } else if (node.left == null) {
+                parent.left = node.right;
+                return;
+            } else {  // find the largest  Node on the Left Node and link the right child  to it.
+                parent.left = node.left;
+                Node rightChild = node.left.right;
+                Node parentRight = node.left;
+                while (rightChild != null) {
+                    parentRight = rightChild;
+                    rightChild = rightChild.right;
+                }
+                parentRight.right = node.right;
+            }
+        } else // right child of parent is deleted
         {
-            if ( isLeft )
-                parent.left = null;
-            else
-                parent.right = null;
-            return;
-        }
-        else if ( current.left == null )
-        {
-            if ( isLeft )
-                parent.left = current.right;
-            else
-                parent.right = current.right;
-            return;
-        }
-        else if ( current.right == null )
-        {
-            if ( isLeft )
-                parent.left = current.left;
-            else
-                parent.right = current.left;
-        }
-        else if ( (current.right != null) && (current.left != null )){
-            Node successor = findSuccessor(current);
-            if ( current == root )
-                root = successor;
-            if ( isLeft )
-                parent.left = successor;
-            else
-                parent.right = successor;
+            if (node.left == null) {
+                parent.right = node.right;
+                return;
+            } else if (node.right == null) {
+                parent.right = node.left;
+                return;
+            } else // neither of the deleted childrent are null
+            {
+                parent.right = node.right;
+                // find the smallest node of the right node
+                Node leftChild = node.right.left;
+                Node p = node.right;
+                while (leftChild != null) {
+                    p = leftChild;
+                    leftChild = leftChild.left;
+                }
+                p.left = node.left;
+            }
         }
     }
 
@@ -337,156 +253,45 @@ public class binaryTree
         return false;
     }
 
-    private Node findSuccessor(Node deleteNode )
+    public ArrayList<ArrayList<Integer>>  verticalOrder()
     {
-        Node current = deleteNode.right;
-        Node successor = null;
-        Node parentSuccessor = null;
-        while(current != null )
-        {
-            parentSuccessor = successor;
-            successor = current;
-            current = current.left;
-        }
-        if ( deleteNode.right != null  ) {
-            parentSuccessor.left = successor.right;
-            successor.right = deleteNode.right;
-        }
-        return successor;
-    }
-
-    public List<List<Integer>>  verticalOrder()
-    {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if ( root == null )
-            return result;
-        HashMap<Integer, ArrayList<Integer>> map = new HashMap<Integer,
-                ArrayList<Integer>>();
-        int minLevel = 0, maxLevel = 0;
-        LinkedList<Node> queue = new LinkedList<Node>();
-        LinkedList<Integer> levelQ = new LinkedList<Integer>();
-        queue.add(root);
-        levelQ.add(0);
-        while(!queue.isEmpty()){
-            Node next = queue.poll();
-            int level = levelQ.poll();
-            minLevel = Math.min(minLevel, level );
-            maxLevel = Math.max(maxLevel, level );
-
-            if (map.containsKey(level))
-            {
-                map.get(level).add(next.id);
-            }
-            else
-            {
-                ArrayList<Integer> list = new ArrayList<Integer>();
-                list.add(next.id);
-                map.put(level, list);
-            }
-            if ( next.left != null ){
-                queue.offer(next.left);
-                levelQ.offer(level - 1);
-            }
-            if ( next.right != null ){
-                queue.offer(next.right);
-                levelQ.offer(level+1);
-            }
-        }
-        for(int i = minLevel; i <= maxLevel; i++){
-            if( map.containsKey(i))
-                result.add(map.get(i));
-        }
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        traverse(root, 0, result);
         return result;
     }
-
-    public void delete(int value){
-        if ( root == null ){
-            return;
-        }
-        Node current = root;
-        Node parent = null;
-        boolean isLeft = false;
-        while( current.id != value ) {
-            parent = current;
-            if (current.id < value) {
-                current = current.right;
-                isLeft = false;
-            } else {
-                current = current.left;
-                isLeft = true;
-            }
-            if (current == null)
-                return;
-        }
-        if ( ( current.left == null ) &&
-            ( current.right == null ))
-        {
-            if ( current == root )
-                root = null;
-           else if ( isLeft )
-               parent.left = null;
-            else
-               parent.right = null;
-            return;
-        }else if ( current.left == null ) {
-            if ( current == root )
-                root = current.right;
-            else if ( isLeft )
-                parent.left = current.right;
-            else
-                parent.right = current.right;
-            return;
-        }
-        else if ( current.right == null )
-        {
-            if ( isLeft )
-                parent.left = current.left;
-            else
-                parent.right = current.left;
-        }else if (( current.left != null ) && ( current.right != null )){
-            Node successor = getSuccessor(current );
-            if ( current == root )
-                root = successor;
-            else if ( isLeft )
-                parent.left = successor;
-            else
-                parent.right = successor;
-        }
-    }
-
-    public Node getSuccessor(Node deleteNode)
+    
+    void traverse(Node node, int level, ArrayList<ArrayList<Integer>> result)
     {
-          Node successor = null;
-          Node parentSuccessor = null;
-          Node current = deleteNode.right;
-          while ( current != null  )
-          {
-              parentSuccessor = successor;
-              successor = current;
-              current = current.left;
-          }
-          if ( deleteNode.right != successor ) {
-              parentSuccessor.left = successor.right;
-              successor.right = deleteNode.right;
-          }
-        return successor;
+         if ( result.size() <= level )
+         {
+             ArrayList<Integer> row = new ArrayList<>();
+             row.add(node.id);
+             result.add(row);
+         }
+         else
+         {
+             result.get(level).add(node.id);
+         }
+         if ( node.left != null )
+             traverse(node.left, level+1, result);
+         if ( node.right != null )
+             traverse(node.right, level+1, result);
     }
+
+
+
     public int maxDepth(Node oneNode)
     {
         if ( oneNode == null )
             return 0;
-        return( Math.max( maxDepth( oneNode.left ), maxDepth(oneNode.right)) + 1);
+        return(Math.max(maxDepth(oneNode.left), maxDepth(oneNode.right)) + 1);
     }
     public void traverseInOrder(Node currentNode)
     {
         if ( currentNode == null )
             return;
-        if ( currentNode.left != null )
-        {
-            traverseInOrder(currentNode.left );
-        }
-        System.out.print("  " + currentNode.id );
-        if ( currentNode.right != null )
-           traverseInOrder(currentNode.right);
+        traverseInOrder(currentNode.left);
+        System.out.print(currentNode.id + " ");
+        traverseInOrder(currentNode.right);
     }
 }

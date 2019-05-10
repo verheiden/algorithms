@@ -6,18 +6,20 @@ public class minstack {
     static public void main(String[] args){
         minstack st = new minstack();
         st.push(19);
-        st.push(10);
+        st.push(-10);
         st.push(9);
+        st.push(-11);
         System.out.println(st.getMin());
         st.push(8);
         System.out.println(st.getMin());
         st.push(7);
         System.out.println(st.getMin());
-        st.push(6);
+        st.push(-12);
         System.out.println(st.getMin());
         st.pop();
         System.out.println(st.getMin());
         st.pop();
+        st.push(-29);
         System.out.println(st.getMin());
         st.pop();
         System.out.println(st.getMin());
@@ -29,6 +31,24 @@ public class minstack {
      }
     Node first = null;
     long minEle ;
+    public void push1(int x){
+        if ( first == null )
+        {
+            first = new Node(x, null);
+            minEle = x;
+        }
+        else
+        {
+            if ( x < minEle )
+            {
+                first = new Node(2*x - minEle , first);
+                minEle = x;
+            }
+            else
+                first = new Node(x, first);
+        }
+    }
+
     public void push(int x)
     {
 
@@ -48,7 +68,6 @@ public class minstack {
         {
             first = new Node(x, first);
         }
-
     }
 
     public void pop() {
@@ -67,22 +86,19 @@ public class minstack {
             return -1;
         return((int)first.data) ;
     }
-
-    public int getMin() {
-        if ( first == null )
-            return -1;
-        return((int) minEle);
-    }
-
-    class Node {
+   int getMin()
+   {
+       if ( first == null )
+           return -1;
+       return (int) minEle;
+   }
+   public class Node {
         long data;
         Node next;
-        public Node(long x, Node following)
+        public Node(long d, Node n)
         {
-            data = x;
-            next = following;
+            data = ( long )d;
+            next = n;
         }
-    }
-
-
+   }
 }

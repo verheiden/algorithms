@@ -34,7 +34,7 @@ public class LinkedListSort {
         ListNode faster;
         ListNode slower = a;
         ListNode first = a;
-        ListNode prev = null;
+
         if ( a == null || a.next == null  )
             return a;
         faster = a.next;

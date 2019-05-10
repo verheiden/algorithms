@@ -4,5 +4,6 @@ package com.example;
  * Created by jung on 1/18/16.
  */
 public enum State {
-    Unvisited, Visting, Visited;
+    Visited,
+    Unvisited
 }

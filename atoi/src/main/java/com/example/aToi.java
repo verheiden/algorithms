@@ -7,23 +7,17 @@ public class aToi {
         System.out.print( new aToi().myAtoi(new String("56748234")));
     }
     public int myAtoi(String str) {
-        if ( str == null || str.length() == 0 )
+        if ( str == null )
             return 0;
-        int decimal = 0;
-        long sum = 0;
-        for (int i = 0; i < str.length(); i++ )
+        int sum = 0;
+        for(int i = 0; i < str.length(); i++)
         {
-            char c = str.charAt(i);
-            if ( ! isDigit(c) )
+            char cc = str.charAt(i);
+            if ( !isDigit(cc))
                 return 0;
-            sum = sum*10 + c - '0';
-
-            if ( sum > Integer.MAX_VALUE )
-            {
-                return(Integer.MAX_VALUE);
-            }
+            sum = sum*10 + (cc - '0');
         }
-        return( (int) sum);
+        return sum;
     }
     boolean isDigit(char c)
     {

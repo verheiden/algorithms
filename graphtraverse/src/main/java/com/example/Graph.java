@@ -6,7 +6,8 @@ package com.example;
  */
 public class Graph {
     private int count;
-    private Node vertices[];
+    private Node[] vertices;
+    Node root;
     int max;
 
     public Graph(int size)
@@ -32,5 +33,12 @@ public class Graph {
     public  Node[] getNode()
     {
         return vertices;
+    }
+    public void refresh()
+    {
+        for ( int i = 0; i < count; i++)
+        {
+            vertices[i].state = State.Unvisited;
+        }
     }
 }

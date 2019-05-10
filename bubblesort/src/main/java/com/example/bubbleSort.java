@@ -19,20 +19,24 @@ public class bubbleSort {
 
     private static void sortBubble(int[] list)
     {
+        int N = list.length;
         boolean swapped = true;
-        int n = list.length;
-        for(int pass = n-1; ( pass>0 && swapped ); pass--)
+        for( int i = N-1; swapped == true && i>=1; i--)
         {
-            for(int i = 0; i < pass; i++){
-                swapped = false;
-                if ( list[i] > list[i+1]){
-                    swapped  = true;
-                    int temp = list[i+1];
-                    list[i+1] = list[i];
-                    list[i] = temp;
+            swapped = false;
+            for( int j = 0; j < i ; j++){
+                if ( list[j] > list[j+1] ) {
+                    swap(list, j, j + 1);
+                    swapped = true;
                 }
             }
         }
+    }
+    private static void swap(int[] data, int i, int j)
+    {
+        int temp = data[i];
+        data[i] = data[j];
+        data[j] = data[i];
     }
 }
 

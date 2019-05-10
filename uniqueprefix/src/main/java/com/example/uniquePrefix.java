@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class uniquePrefix {
@@ -12,7 +13,8 @@ public class uniquePrefix {
         input.add(new String( "bert"));
         uniquePrefix obj = new uniquePrefix();
         //ArrayList<String> out = obj.prefix(input);
-        int result = obj.colorful(123);
+        //int result = obj.colorful(123);
+        obj.test1();
 
     }
     public int colorful(int a)
@@ -68,6 +70,85 @@ public class uniquePrefix {
             res.add( tree.findPrefix(k));
         }
         return res;
+    }
+    ArrayList<String> test1()
+    {
+        ArrayList<String> input = new ArrayList<>(Arrays.asList("zebra", "dog", "duck", "dot"));
+        TrieTree1 obj = new TrieTree1();
+        ArrayList<String> ans = obj.prefix(input);
+        return ans;
+    }
+    class TrieTree1
+    {
+        TrieNode root;
+
+
+        public ArrayList<String> prefix(ArrayList<String> a)
+        {
+            if ( a == null || a.size() == 0 )
+                return a;
+            root = new TrieNode();
+
+            for(String s : a )
+            {
+                loadS(s);
+            }
+
+            ArrayList<String> ans = new ArrayList<String>();
+            for( String s: a )
+            {
+                ans.add( findPrefix(s));
+            }
+            return ans;
+        }
+
+        void loadS(String s)
+        {
+            TrieNode node = root;
+
+            for( int i = 0; i < s.length(); i++)
+            {
+                Character c = new Character(s.charAt(i));
+                if (node.children.containsKey(c))
+                {
+                    node = node.children.get( c);
+                }
+                else
+                {
+                    TrieNode newNode = new TrieNode();
+                    node.children.put(c, newNode);
+                    node = newNode;
+                }
+                node.members++;
+            }
+        }
+        String findPrefix(String s)
+        {
+            TrieNode node = root;
+
+            StringBuffer buf = new StringBuffer();
+            for(int i = 0; i < s.length(); i++)
+            {
+                Character c = new Character(s.charAt(i));
+                node = node.children.get( c);
+                buf.append(c);
+                if ( node.members == 1 )
+                    return buf.toString();
+            }
+            return null;
+        }
+        class TrieNode
+        {
+            HashMap<Character, TrieNode> children;
+            int members;
+
+            public TrieNode()
+            {
+                children = new HashMap<Character,TrieNode>();
+                members = 0;
+            }
+        }
+
     }
     class TrieTree
     {

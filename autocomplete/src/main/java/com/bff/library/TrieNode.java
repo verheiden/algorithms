@@ -11,7 +11,6 @@ public class TrieNode
 {
     Character code;
     HashMap<Character, TrieNode > children;
-
     public TrieNode(char c)
     {
         code = new Character(c);
@@ -31,24 +30,12 @@ public class TrieNode
             children.put( new Character(c), new TrieNode(c));
         }
     }
-
     public TrieNode getChildNode(char c)
     {
         return children.get(new Character(c));
     }
-
     public boolean contains(char c)
     {
         return( children.get(new Character(c)) != null );
-    }
-    public int hashCode() {
-        return code.hashCode();
-    }
-    public boolean equals(Object node){
-        if ( !(node instanceof TrieNode )) {
-            return false;
-        }
-        TrieNode that = (TrieNode) node;
-        return( this.getChar() == that.getChar());
     }
 }

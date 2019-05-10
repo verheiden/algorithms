@@ -11,29 +11,23 @@ import java.util.Stack;
 public class Node
 {
     public Node[] child;
-    public int childCount;
-    private String vertex;
+    String vertex;
     public State state;
+    int childCount;
 
-    public Node(String vertex)
+    public Node(String v, int c)
     {
-        this.vertex = vertex;
-    }
-
-    public Node(String vertex, int childlen)
-    {
-        this.vertex = vertex;
+        vertex = v;
         childCount = 0;
-        child = new Node[childlen];
         state = State.Unvisited;
+        child = new Node[c];
     }
 
     public void addChildNode(Node adj)
     {
-        adj.state = State.Unvisited;
-        if(childCount < child.length)
+        if (childCount < child.length )
         {
-            this.child[childCount] = adj;
+            child[childCount] = adj;
             childCount++;
         }
     }
@@ -47,5 +41,4 @@ public class Node
     {
         return vertex;
     }
-
 }

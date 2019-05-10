@@ -3,45 +3,45 @@ package com.example;
 public class QuickSort {
     static final int[] arrays  =  { 98, 123, 456, -1, -11, -333, 789, 1234, -3, 77 };
     static public void main(String[]  args){
-        quickSort(arrays, 0, 9);
+        quickSort(arrays, 0, arrays.length -1);
         System.out.println("\nQuickSort : ");
         for(int n : arrays ){
             System.out.print(" " + n );
         }
     }
 
-    static private void quickSort(int[] arrays, int low, int high)
+    static void quickSort(int[] data, int start, int end)
     {
-         int pivot = arrays[(low + high)/2];
-         int i = low;
-         int j = high;
-         while(i <= j )
-         {
-              while(arrays[i] < pivot ){
-                  i++;
-              }
-              while(arrays[j] > pivot ){
-                  j--;
-              }
-             if ( i <= j )
-             {
-                 swap(arrays, i, j);
-                 i++;
-                 j--;
-             }
-         }
-        if ( j > low )
+        int pivot = data[( start  + end )/2];
+        int i = start;
+        int j = end;
+
+        while( i <=  j)
         {
-            quickSort(arrays, low, j);
+            while( data[i] < pivot )
+            {
+                i++;
+            }
+            while( data[j] > pivot )
+            {
+                j--;
+            }
+            if ( i <= j ) {
+                swap(data, i, j);
+                i++;
+                j--;
+            }
         }
-        if ( i < high ){
-            quickSort(arrays, i, high);
-        }
+        if ( j > start )
+            quickSort(data, start, j);
+        if ( i < end )
+            quickSort(data, i, end);
+
     }
-    private static void swap(int[] arrays, int i, int j)
+    static void swap(int[] data, int i , int j )
     {
-        int tmp = arrays[i];
-        arrays[i] = arrays[j];
-        arrays[j] = tmp;
+        int tmp = data[i];
+        data[i] = data[j];
+        data[j] = tmp;
     }
 }
