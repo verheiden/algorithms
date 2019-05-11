@@ -6,7 +6,7 @@ public class heap {
     static int Size;
     static public void main(String[] args){
 
-        heapSort1(numbers);
+        heapSort(numbers);
         System.out.println("\nHeap sorted array\n");
         for(int i : numbers ){
             System.out.print(" " + i);
@@ -26,60 +26,69 @@ public class heap {
         data[j] = temp;
     }
     static int Total ;
-    static void heapSort1(int[] data){
-        Total = data.length - 1;
-        heapify1(data);
-
-        while( Total > 0 )
-        {
-            swap(data, 0, Total);
+    static void heapSort(int[] data){
+         Total = data.length -1;
+         heapify(data);
+         while(Total > 0 ){
+            swap(data, 0, Total) ;
             Total--;
-            maxHeap1(data, 0);
-        }
+            maxHeap(data, 0);
+         }
     }
-    static void maxHeap1(int[] data, int parent){
-        int left = parent*2;
+    static void maxHeap(int[] data, int parent)
+    {
+        int N = data.length;
+        int left = 2*parent;
         int right = left + 1;
         int largest = parent;
-        if ( left <= Total &&  data[largest] < data[left])
+        if ( (left < N) && data[left] > data[largest])
+        {
             largest = left;
-        if ( right <= Total && data[largest] < data[right] )
+        }
+        if ( right < N && data[right] > data[largest]){
             largest = right;
-        if ( largest != parent ) {
-            swap(data, parent, largest);
-            maxHeap1(data, largest);
+        }
+
+        if ( largest != parent )
+        {
+            swap(data, largest, parent );
+            maxHeap(data, largest)  ;
         }
     }
-    static void heapify1(int[] data){
-        for( int i = Total/2; i >= 0; i--)
+    static void heapify(int[] data){
+        int N = data.length -1;
+        for(int i = N/2; i >= 0; i--)
         {
-            maxHeap1(data, i);
+            maxHeap(data, i);
         }
     }
 
     static private void quickSort(int[] arrays, int low, int high)
     {
-        int pivot = arrays[(low+high)/2];
+        if ( low >= high )
+            return;
+        int pivot = arrays[(low + high)/2];
         int i = low;
         int j = high;
-        while( i <= j )
+        while( i < j  )
         {
             while( arrays[i] < pivot )
-                i++;
-            while(arrays[j] > pivot )
-                j--;
-            if ( i <= j )
             {
-                int temp = arrays[i];
-                arrays[i] = arrays[j];
-                arrays[j] =  temp;
+                i++;
+            }
+            while( arrays[j] > pivot )
+            {
+                j--;
+            }
+            if ( i <= j ) {
+                swap(arrays, i, j);
                 i++;
                 j--;
             }
         }
-        if ( j > low )
-            quickSort(arrays, low, j );
-        if ( i < high)
-            quickSort(arrays, i, high);
+        if ( low < j )
+            quickSort(arrays, low, j);
+        if ( i < high )
+            quickSort(arrays,i, high );
     }
 }
