@@ -15,18 +15,21 @@ public class FirstUniqueChar {
     char unique1(String a)
     {
         LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
+
         for( int i = 0; i < a.length(); i++){
-            if ( map.containsKey(a.charAt(i)))
-                map.put(a.charAt(i), map.get(a.charAt(i)) +1  );
-            else
-                map.put(a.charAt(i), 1);
-        }
-        for(Character k: map.keySet())
-        {
-            if ( map.get(k) == 1 )
+            char c = a.charAt(i);
+            if ( map.containsKey(c))
             {
-                return k;
+                map.put(c, map.get(c) + 1);
             }
+            else
+            {
+                map.put(c, 1);
+            }
+        }
+        for( Character c : map.keySet()){
+            if ( map.get(c) == 1)
+                return c;
         }
         return '\0';
     }

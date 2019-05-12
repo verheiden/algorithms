@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/acmicpc/acmicpc.iml" filepath="$PROJECT_DIR$/acmicpc/acmicpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/addlinkedlist/addLinkedList.iml" filepath="$PROJECT_DIR$/addlinkedlist/addLinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithms.iml" filepath="$PROJECT_DIR$/algorithms.iml" />
       <module fileurl="file://$PROJECT_DIR$/angryprofessor/angryprofessor.iml" filepath="$PROJECT_DIR$/angryprofessor/angryprofessor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/antidiagnal/antiDiagnal.iml" filepath="$PROJECT_DIR$/antidiagnal/antiDiagnal.iml" />
       <module fileurl="file://$PROJECT_DIR$/atoi/atoi.iml" filepath="$PROJECT_DIR$/atoi/atoi.iml" />
       <module fileurl="file://$PROJECT_DIR$/autocomplete/autocomplete.iml" filepath="$PROJECT_DIR$/autocomplete/autocomplete.iml" />
       <module fileurl="file://$PROJECT_DIR$/avgset/avgset.iml" filepath="$PROJECT_DIR$/avgset/avgset.iml" />
@@ -19,6 +21,7 @@
       <module fileurl="file://$PROJECT_DIR$/fastinsertion/fastinsertion.iml" filepath="$PROJECT_DIR$/fastinsertion/fastinsertion.iml" />
       <module fileurl="file://$PROJECT_DIR$/fibonacci/fibonacci.iml" filepath="$PROJECT_DIR$/fibonacci/fibonacci.iml" />
       <module fileurl="file://$PROJECT_DIR$/findmedium/findmedium.iml" filepath="$PROJECT_DIR$/findmedium/findmedium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firstuniquechar/firstUniqueChar.iml" filepath="$PROJECT_DIR$/firstuniquechar/firstUniqueChar.iml" />
       <module fileurl="file://$PROJECT_DIR$/formatfloating/formatfloating.iml" filepath="$PROJECT_DIR$/formatfloating/formatfloating.iml" />
       <module fileurl="file://$PROJECT_DIR$/fullJustify/fulljustify.iml" filepath="$PROJECT_DIR$/fullJustify/fulljustify.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphtraverse/graphtraverse.iml" filepath="$PROJECT_DIR$/graphtraverse/graphtraverse.iml" />

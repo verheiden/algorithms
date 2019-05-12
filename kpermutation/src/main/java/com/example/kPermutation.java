@@ -7,8 +7,8 @@ public class kPermutation {
     {
         kPermutation obj = new kPermutation();
 
- /*       String abc = obj.getPermutation(2, 2);
-        System.out.println(abc); */
+       String abc = obj.getPermutation(2, 2);
+        System.out.println(abc);
         System.out.println(obj.trailingZeroes(9247));
     }
     public int trailingZeroes(int a) {
