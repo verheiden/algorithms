@@ -60,10 +60,10 @@
       <module fileurl="file://$PROJECT_DIR$/quicksort2/quicksort2.iml" filepath="$PROJECT_DIR$/quicksort2/quicksort2.iml" />
       <module fileurl="file://$PROJECT_DIR$/repeatwords/repeatwords.iml" filepath="$PROJECT_DIR$/repeatwords/repeatwords.iml" />
       <module fileurl="file://$PROJECT_DIR$/reverse/reverse.iml" filepath="$PROJECT_DIR$/reverse/reverse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reversebit/reverseBit.iml" filepath="$PROJECT_DIR$/reversebit/reverseBit.iml" />
       <module fileurl="file://$PROJECT_DIR$/reverseDigit/reverseDigit.iml" filepath="$PROJECT_DIR$/reverseDigit/reverseDigit.iml" />
       <module fileurl="file://$PROJECT_DIR$/reverseNum/reverseNum.iml" filepath="$PROJECT_DIR$/reverseNum/reverseNum.iml" />
       <module fileurl="file://$PROJECT_DIR$/reversearray/reversearray.iml" filepath="$PROJECT_DIR$/reversearray/reversearray.iml" />
-      <module fileurl="file://$PROJECT_DIR$/reversebit/reversebit.iml" filepath="$PROJECT_DIR$/reversebit/reversebit.iml" />
       <module fileurl="file://$PROJECT_DIR$/reversenumber/reversenumber.iml" filepath="$PROJECT_DIR$/reversenumber/reversenumber.iml" />
       <module fileurl="file://$PROJECT_DIR$/reverseshuffle/reverseshuffle.iml" filepath="$PROJECT_DIR$/reverseshuffle/reverseshuffle.iml" />
       <module fileurl="file://$PROJECT_DIR$/searchrange/searchrange.iml" filepath="$PROJECT_DIR$/searchrange/searchrange.iml" />

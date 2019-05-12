@@ -1,37 +1,40 @@
 package com.example;
 
+/*
+ * Reverse the bits of a number.
+ */
 import java.util.ArrayList;
 
 public class reverseBit {
     public static void main(String[] args){
         reverseBit obj = new reverseBit();
-        System.out.println(obj.reverse(3));
+        System.out.println(" Answer is " + String.format("%x", obj.reverse(135)));
 
     }
-    public long reverse(long a)
+    public int  reverse(long a)
     {
 
         for( int i = 0; i <= 15; i++) {
-            long right  = (0x1<<i);
-            long left = (0X1<<(31-i));
-            long rightBit = a & right ;
-            long leftBit = a & left ;
+            long rightBitMask  = (0x1<<i);
+            long leftBitMask = (0X1<<(31-i));
+            long rightBit = a & rightBitMask ;
+            long leftBit = a & leftBitMask ;
             long ans;
-            if ((leftBit == rightBit)/*0*/ || ((rightBit == right) && (leftBit == left))/*1*/) {
-                left >>= 1;
-                right <<= 1;
-                continue;
+            if (((rightBit == 0) && ( leftBit == 0 )) || (( rightBit != 0 ) && ( leftBit != 0) )) /* they are same */
+            {
+                continue;  /* do not change */
             }
-            if ((rightBit == 0) && (leftBit != 0)) {
-                a &= (~left);
-                a |= right;
-            } else if ((rightBit != 0) && (leftBit == 0)) {
-                a |= left;
-                a &= (~right);
+            else if (( rightBit == 0 ) && ( leftBit != 0 ))
+            {
+                a |= rightBitMask;
+                a &= ~leftBitMask;
             }
-            left = left >> 1;
-            right = right << 1;
+            else if ((leftBit == 0 ) && (rightBit != 0))
+            {
+                a |= leftBitMask;
+                a &= ~rightBitMask;
+            }
         }
-        return a&0xffffffff;
+        return (int) ( a&0xffffffff );
     }
 }
