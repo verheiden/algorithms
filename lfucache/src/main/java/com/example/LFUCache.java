@@ -9,61 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class LRUCache{
-    private static class Entry<K, T> {
-        K key;
-        T value;
-        int hitCount;
-        public Entry<K, T>(K ke, T va)
-        {
-            key = ke;
-            value = va;
-            hitCount = 1;
-        }
-    }
-    private static final int CACHE_MAX = 5;
-    Map<K, Entry<K, T>> cache = new HashMap<>();
-    PriorityQueue<Entry<K, T>> cachePri = new PriorityQueue<Entry<K,T>>(
-        new Comparator<Entry<K,T>>(){
-            public int compare(Entry<K,T> a, Entry<K,T> b){
-                return a.hitCount - b.hitCount;
-            }
-        });
-    public void set(K ke, T va)
-    {
-        if ( !cache.contains(ke)) {
-            if (cache.size() >= CACHE_MAX) {
-                Entry<K, T> lowest = cachePri.poll();
-                cache.remove(lowest.key);
-            }
-        }
-        Entry<K,T> entry = new Entry<K,T>(ke, va);
-        cache.put(K, entry);
-        cachepri.add(entry);
-    }
-    public Entry<K,T> get(K ke)
-    {
-        if ( cache.containsKey(ke))
-        {
-            Entry<K,T> entry = cache.get(ke);
-            cachePri.remove(entry)
-            entry.hiCount++;
-            cachePri.add(entry);
-            return entry;
-        }
-        return null;
-    }
-    public void printall()
-    {
-       for(Map.Entry<K, T> entry : cache.entryset())
-       {
-           System.out.println(entry.getValue() + "   \n");
-       }
-    }
-    public static void main(String[] args){
-        LRUCache<Integer, String> lruCache = new LRUCache<>();
+class LFUCache<K> {
+
+    public static void main(String[] args) {
+        LFUCache <String> lruCache = new LFUCache <String>();
         String the = new String("the");
-        String new = new String("new");
+        String New = new String("new");
         String world = new String("world");
         String is = new String("is");
         String thrust = new String("thrust");
@@ -71,22 +22,70 @@ public class LRUCache{
         String us = new String("us");
         String mine = new String("mine");
 
-        lruCache.set(111, the);
-        lruCache.set(222, new);
-        lruCache.set(333, world);
-        lruCache.set(444, is);
-        lruCache.set(555, thrust);
-        String word = lruCache.get(111);
-        word = lruCache.get(222);
-        lruCache.get(444);
-        lruCache.set(666, upon);
-        lruCache.get(222)
-        lruCache.set(777, us);
-        lruCache.set(888, mine);
+        lruCache.set(the);
+        lruCache.set(New);
+        lruCache.set(world);
+        lruCache.set(is);
+        lruCache.set(thrust);
 
+        lruCache.get(the);
+        lruCache.get(New);
+        lruCache.get(world);
+        lruCache.set(upon);
+        lruCache.get(thrust);
+        lruCache.set(us);
+        lruCache.set(mine);
 
-        String word = lruCache.get(new);
-        word = lruCache.get(world);
         lruCache.printall();
     }
-}
+
+       public static class Entry<K> {
+        int hitCount;
+        K value;
+
+        public Entry(K val) { value = val;  hitCount = 0; }
+       }
+       Map<K, Entry<K>> cache = new HashMap<>();
+
+       public static final int CACHE_MAX = 5;
+       PriorityQueue<Entry<K>>  cachePri = new PriorityQueue<Entry<K>>(new Comparator<Entry>(){
+           public  int compare(Entry a, Entry b ) { return a.hitCount - b.hitCount; }
+       });
+
+       public void set(K k )
+       {
+           Entry entry;
+           if ( !cache.containsKey(k)) {
+               entry = new Entry(k);
+               if ( cache.size()>= CACHE_MAX ) {
+                   Entry<K> least = cachePri.poll();
+                   cache.remove(least.value);
+                   cachePri.remove(least);
+               }
+               cache.put(k, entry);
+               cachePri.add(entry);
+           }
+           else {
+               entry = cache.get(k);
+           }
+           entry.hitCount++;
+       }
+
+        public K  get(K ke)
+        {
+            if ( cache.containsKey(ke)) {
+                Entry<K> entry = cache.get(ke);
+                entry.hitCount++;
+                return entry.value;
+            }
+            return null;
+        }
+
+        public void printall()
+        {
+            for ( Map.Entry<K, Entry<K>> entry : cache.entrySet()) {
+
+                System.out.println(entry.getValue().value  + "   \n");
+            }
+        }
+    }
